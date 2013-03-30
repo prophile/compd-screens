@@ -5,3 +5,4 @@ src/libs.js
 src/bootstrap.css
 screens.js
 twistd.pid
+doc/annotated-source.*

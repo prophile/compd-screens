@@ -1,9 +1,18 @@
 #!/bin/bash
 echo '' > src/screens.js
+echo '' > doc/annotated-source.md
 SOURCES="clock socket data managers/override"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
     coffee --print src/coffee/$SOURCE.litcoffee >> src/screens.js
+    cat src/coffee/$SOURCE.litcoffee >> doc/annotated-source.md
 done
+if which -s pandoc
+  then
+    echo "Compiling annotated source..."
+    pandoc --from markdown --to html5 --standalone --toc --smart \
+           -o doc/annotated-source.html \
+              doc/annotated-source.md
+fi
 
