@@ -19,4 +19,6 @@ It is left as an exercise to the reader to guess how the rest of these go...
 
         SelectedDisplay.map( (x) -> x is 'no-entry' )
                        .assign $('#no-entry'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'kill-origin' )
+                       .assign $('#kill-origin'), 'toggle'
 

@@ -17,6 +17,7 @@ As an exception, judges' displays are not public-facing: on those
 we display the origin of the kill.
 
         return 'no-entry' if state.kill? unless state.mode is 'judge'
+        return 'kill-origin' if state.kill? and state.mode is 'judge'
 
 In all other cases, fall back to the default view.
 
