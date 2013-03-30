@@ -4,6 +4,7 @@ echo '' > doc/annotated-source.md
 SOURCES=""
 SOURCES+=" clock socket data turnover display-select"
 SOURCES+=" managers/container managers/override managers/clock"
+SOURCES+=" managers/kill-origin"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
