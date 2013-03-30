@@ -1,0 +1,15 @@
+#!/bin/bash
+rm -rf src/libs.js dep/js-libs
+mkdir -p dep/js-libs
+# Install bacon.js
+echo "Installing bacon.js"
+wget 'https://raw.github.com/raimohanska/bacon.js/0.3.0/dist/Bacon.min.js' -O dep/js-libs/Bacon.js
+# Install jQuery
+echo "Installing jQuery"
+wget 'http://code.jquery.com/jquery-1.9.1.min.js' -O dep/js-libs/jquery.js
+# Install underscore
+echo "Installing underscore"
+wget 'https://raw.github.com/documentcloud/underscore/1.4.4/underscore-min.js' -O dep/js-libs/underscore.js
+# Flatten them all together
+cat dep/js-libs/*.js > src/libs.js
+
