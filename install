@@ -3,6 +3,7 @@ rm -rf dep
 virtualenv dep
 source dep/bin/activate
 easy_install twisted
+easy_install autobahn
 easy_install docopt
 easy_install nose
 easy_install coverage

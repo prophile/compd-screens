@@ -5,6 +5,5 @@ if [ ! -d dep ]
     exit 1
 fi
 source dep/bin/activate
-cd src
-exec python server.py $@
+twistd -n web -p 8080 --path=src
 
