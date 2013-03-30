@@ -32,3 +32,34 @@ initialised with the current date.
 
     window.Clock = bus.toProperty new Date
 
+Day Base
+--------
+
+The *day base* is the UNIX timestamp of midnight, today. It can be accessed via
+the *DayBase* function.
+
+In its implementation, we first get the current time as a JavaScript *Date*
+object.
+
+    window.DayBase = ->
+        rightNow = new Date
+
+We then, since the *Date* object is mutable, set its time fields to zero.
+
+        rightNow.setHours 0
+        rightNow.setMinutes 0
+        rightNow.setSeconds 0
+        rightNow.setMilliseconds 0
+
+Finally, we convert to a UNIX timestamp, and divide by 1000 since the JavaScript
+API is generally oriented around milliseconds rather than seconds.
+
+        rightNow.valueOf() / 1000
+
+As a utility function, we also provide *FromUNIX*, which converts between UNIX
+timestamps and JavaScript *Date* objects.
+
+Its implementation is trivial.
+
+    window.FromUNIX = (unixTimestamp) -> new Date(1000 * unixTimestamp)
+
