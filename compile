@@ -2,7 +2,7 @@
 echo '' > src/screens.js
 echo '' > doc/annotated-source.md
 SOURCES=""
-SOURCES+=" clock socket data turnover display-select"
+SOURCES+=" clock socket data turnover display-select keyboard"
 SOURCES+=" managers/container managers/override managers/clock"
 SOURCES+=" managers/kill-origin"
 for SOURCE in $SOURCES
