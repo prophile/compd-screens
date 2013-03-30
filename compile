@@ -1,3 +1,9 @@
 #!/bin/bash
-coffee --print src/coffee > src/screens.js
+echo '' > src/screens.js
+SOURCES="clock socket"
+for SOURCE in $SOURCES
+do
+    echo "Compiling $SOURCE..."
+    coffee --print src/coffee/$SOURCE.litcoffee >> src/screens.js
+done
 
