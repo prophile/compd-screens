@@ -16,14 +16,17 @@ Getting Started
 
 To install:
 
-1. Install compd
-2. Run *./install*
+1. Install the CoffeeScript compiler
+2. Install compd
+3. Run *./install*
 
 All other dependencies, through the magic of virtualenv, are installed locally - in the *dep* directory as a matter of fact.
 
 To run, use *./run*.
 
 To develop, enter the virtualenv using *./shell*.
+
+CoffeeScript frontend scripts can be recompiled with *./compile*.
 
 Credit
 ======
