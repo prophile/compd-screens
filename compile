@@ -1,6 +1,6 @@
 #!/bin/bash
 echo '' > src/screens.js
-SOURCES="clock socket data"
+SOURCES="clock socket data managers/override"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
