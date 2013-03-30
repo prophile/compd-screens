@@ -27,6 +27,7 @@ To run, use *./run*.
 To develop, enter the virtualenv using *./shell*.
 
 CoffeeScript frontend scripts can be recompiled with *./compile*.
+Documentation will be generated if *pandoc* is available.
 
 Credit
 ======
