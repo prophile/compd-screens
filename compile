@@ -11,8 +11,8 @@ done
 if which -s pandoc
   then
     echo "Compiling annotated source..."
+    python scripts/add-coffeescript.py <doc/annotated-source.md | \
     pandoc --from markdown --to html5 --standalone --toc --smart \
-           -o doc/annotated-source.html \
-              doc/annotated-source.md
+           -o doc/annotated-source.html -
 fi
 
