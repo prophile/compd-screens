@@ -1,6 +1,6 @@
 #!/bin/bash
 echo '' > src/screens.js
-SOURCES="clock socket"
+SOURCES="clock socket data"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
