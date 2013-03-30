@@ -4,7 +4,7 @@ echo '' > doc/annotated-source.md
 SOURCES=""
 SOURCES+=" clock socket data turnover keyboard day-sched display-select"
 SOURCES+=" managers/container managers/override managers/clock"
-SOURCES+=" managers/kill-origin"
+SOURCES+=" managers/kill-origin managers/day-sched"
 SOURCES+=" debug"
 for SOURCE in $SOURCES
 do
