@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf src/libs.js dep/js-libs
+rm -rf src/libs.js src/bootstrap.css dep/js-libs
 mkdir -p dep/js-libs
 # Install bacon.js
 echo "Installing bacon.js"
@@ -10,6 +10,16 @@ wget 'http://code.jquery.com/jquery-1.9.1.min.js' -O dep/js-libs/jquery.js
 # Install underscore
 echo "Installing underscore"
 wget 'https://raw.github.com/documentcloud/underscore/1.4.4/underscore-min.js' -O dep/js-libs/underscore.js
+# Download and install bootstrap
+echo "Downloading bootstrap"
+wget 'http://twitter.github.com/bootstrap/assets/bootstrap.zip' -O dep/js-libs/bootstrap.zip
+pushd dep/js-libs
+echo "Extracting CSS"
+unzip -p bootstrap.zip bootstrap/css/bootstrap-responsive.min.css > ../../src/bootstrap.css
+echo "Extracting JS"
+unzip -p bootstrap.zip bootstrap/js/bootstrap.min.js > bootstrap.js
+popd
 # Flatten them all together
+echo "Flattening JS"
 cat dep/js-libs/*.js > src/libs.js
 
