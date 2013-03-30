@@ -21,4 +21,22 @@ It is left as an exercise to the reader to guess how the rest of these go...
                        .assign $('#no-entry'), 'toggle'
         SelectedDisplay.map( (x) -> x is 'kill-origin' )
                        .assign $('#kill-origin'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'match-display' )
+                       .assign $('#match-display'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'match-sched' )
+                       .assign $('#match-sched'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'league-state' )
+                       .assign $('#league-state'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'knockout-state' )
+                       .assign $('#knockout-state'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'next-match' )
+                       .assign $('#next-match'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'day-sched' )
+                       .assign $('#day-sched'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'zone' )
+                       .assign $('#zone'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'layout' )
+                       .assign $('#layout'), 'toggle'
+        SelectedDisplay.map( (x) -> x is 'arena-entrance' )
+                       .assign $('#arena-entrance'), 'toggle'
 
