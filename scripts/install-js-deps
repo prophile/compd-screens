@@ -15,11 +15,15 @@ echo "Downloading bootstrap"
 wget 'http://twitter.github.com/bootstrap/assets/bootstrap.zip' -O dep/js-libs/bootstrap.zip
 pushd dep/js-libs
 echo "Extracting CSS"
-unzip -p bootstrap.zip bootstrap/css/bootstrap-responsive.min.css > ../../src/bootstrap.css
+unzip -p bootstrap.zip bootstrap/css/bootstrap-responsive.min.css > bootstrap-responsive.css
+unzip -p bootstrap.zip bootstrap/css/bootstrap.min.css > bootstrap.css
 echo "Extracting JS"
 unzip -p bootstrap.zip bootstrap/js/bootstrap.min.js > bootstrap.js
 popd
 # Flatten them all together
 echo "Flattening JS"
 cat dep/js-libs/jquery.js dep/js-libs/underscore.js dep/js-libs/bootstrap.js dep/js-libs/Bacon.js > src/libs.js
+# Generate the CSS
+echo "Combining CSS"
+cat dep/js-libs/bootstrap.css dep/js-libs/bootstrap-responsive.css > src/bootstrap.css
 
