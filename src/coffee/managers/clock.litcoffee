@@ -23,12 +23,11 @@ inclusive, and returns a two character wide string representing it,
 with a given *padding* character for left-padding given in the
 second argument, which defaults to '0'.
 
-We cast to a string in either case by exploiting JavaScript's weak
-typing - concatenating a string and an integer yields an string.
-
         formatDoubleDigit = (value, padding = '0') ->
-            return padding + value if value < 10
-            '' + value
+            if value < 10
+                "#{padding}#{value}"
+            else
+                "#{value}"
 
 We now define *formatTime* utilising *formatDoubleDigit*.
 
