@@ -9,8 +9,10 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="2500"
-   height="2000"
+   width="500"
+   height="400"
+   preserveAspectRatio="xMinYMin meet"
+   viewBox="0 0 500 400"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.1 r9760"
@@ -51,6 +53,7 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g transform="scale(0.2)">
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -102,5 +105,5 @@
          id="flowPara2992"
          style="font-size:500px;text-align:center;text-anchor:middle">NO</flowPara><flowPara
          style="font-size:500px;text-align:center;text-anchor:middle"
-         id="flowPara2994">ENTRY</flowPara></flowRoot>  </g>
+         id="flowPara2994">ENTRY</flowPara></flowRoot>  </g></g>
 </svg>
