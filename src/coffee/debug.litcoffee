@@ -12,11 +12,7 @@ Debug Data Collections
 This is a collection of debug data, for great debugging, and debug.
 
     window.DEBUG.loadDebugData = ->
-        currentDate = new Date
-        currentDate.setHours 0
-        currentDate.setMinutes 0
-        currentDate.setSeconds 0
-        dateBase = currentDate.valueOf() / 1000
+        dateBase = do DayBase
         WS.message.push
             type: 'mode'
             mode: 'judge'
