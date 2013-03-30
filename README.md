@@ -16,7 +16,7 @@ Getting Started
 
 To install:
 
-1. Install the CoffeeScript compiler
+1. Install the CoffeeScript compiler (1.5+ required)
 2. Install compd
 3. Run *./install*
 
@@ -27,6 +27,7 @@ To run, use *./run*.
 To develop, enter the virtualenv using *./shell*.
 
 CoffeeScript frontend scripts can be recompiled with *./compile*.
+Documentation will be generated if *pandoc* is available.
 
 Credit
 ======

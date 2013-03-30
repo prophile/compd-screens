@@ -12,7 +12,7 @@ do
     coffee --print src/coffee/$SOURCE.litcoffee >> src/screens.js
     cat src/coffee/$SOURCE.litcoffee >> doc/annotated-source.md
 done
-if which -s pandoc
+if [ -n "$(which pandoc)" ]
   then
     echo "Compiling annotated source..."
     python scripts/add-coffeescript.py <doc/annotated-source.md | \
