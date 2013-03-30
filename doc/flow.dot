@@ -1,0 +1,94 @@
+digraph G {
+    //subgraph cluster_Sources {
+    // primary sources
+    node [shape = "rect"];
+        Clock;
+        Kill;
+        Mode;
+        Teams;
+        DaySchedule;
+        MatchSchedule;
+        OverrideText;
+        JudgeSelection;
+    // derived sources
+    node [shape = "oval"];
+        CurrentDSItem;
+        TurnoverClock;
+        CurrentMatch;
+        CurrentMatchState;
+        LeagueStandings;
+        KnockoutState;
+        NextMatch;
+        DisplayWhat;
+    //}
+    //subgraph cluster_Managers {
+    // end managers
+    node [shape = "house"];
+        ZoneMgr;
+        OverrideMgr;
+        DefaultMgr;
+        LayoutMgr;
+        DaySchedMgr;
+        MatchSchedMgr;
+        MatchDisplayMgr;
+        LeagueStateMgr;
+        KnockoutStateMgr;
+        NextMatchMgr;
+        KillInfoMgr;
+        ContainerMgr;
+    //}
+    MatchSchedule -> NextMatch;
+    Clock -> NextMatch;
+    Clock -> CurrentDSItem;
+    DaySchedule -> CurrentDSItem;
+    Clock -> CurrentMatch;
+    MatchSchedule -> CurrentMatch;
+    Clock -> CurrentMatchState;
+    CurrentMatch -> CurrentMatchState;
+    MatchSchedule -> LeagueStandings;
+    MatchSchedule -> KnockoutState;
+    Mode -> DisplayWhat;
+    Kill -> DisplayWhat;
+    CurrentMatch -> DisplayWhat;
+    TurnoverClock -> DisplayWhat;
+    JudgeSelection -> DisplayWhat;
+    CurrentDSItem -> DisplayWhat;
+    Clock -> TurnoverClock;
+
+    DisplayWhat -> ContainerMgr;
+
+    CurrentMatch -> ZoneMgr;
+    CurrentMatchState -> ZoneMgr;
+    Teams -> ZoneMgr;
+
+    OverrideText -> OverrideMgr;
+
+    Clock -> DefaultMgr;
+
+    CurrentMatch -> LayoutMgr;
+    Teams -> LayoutMgr;
+
+    CurrentDSItem -> DaySchedMgr;
+    DaySchedule -> DaySchedMgr;
+
+    MatchSchedule -> MatchSchedMgr;
+    Teams -> MatchSchedMgr;
+
+    Teams -> MatchDisplayMgr;
+    LeagueStandings -> MatchDisplayMgr;
+    KnockoutState -> MatchDisplayMgr;
+    CurrentMatch -> MatchDisplayMgr;
+    CurrentMatchState -> MatchDisplayMgr;
+
+    Teams -> LeagueStateMgr;
+    LeagueStandings -> LeagueStateMgr;
+
+    Teams -> KnockoutStateMgr;
+    KnockoutState -> KnockoutStateMgr;
+
+    NextMatch -> NextMatchMgr;
+    Teams -> NextMatchMgr;
+
+    Kill -> KillInfoMgr;
+}
+
