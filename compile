@@ -1,7 +1,9 @@
 #!/bin/bash
 echo '' > src/screens.js
 echo '' > doc/annotated-source.md
-SOURCES="clock socket data turnover display-select managers/override managers/clock"
+SOURCES=""
+SOURCES+=" clock socket data turnover display-select"
+SOURCES+=" managers/container managers/override managers/clock"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
