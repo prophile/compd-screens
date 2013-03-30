@@ -24,12 +24,38 @@ For the judge's display, give the selection from the keyboard.
         return state.judgeSelection if state.mode is 'judge'
 
 For info displays, alternate between the league and timetables based
-on the turnover clock.
+on the turnover clock - unless an association 3 DS item is active
+(which would indicate prizegiving, where we want to minimise
+distractions).
 
         if state.mode is 'info'
-            return 'match-sched' if state.turnover is 0
-            return 'league-state' if state.turnover is 1
-            return 'day-sched' if state.turnover is 2
+            return 'blank' if state.dsAssociation is 3
+            return 'day-sched' if state.turnover is 0
+            return 'match-sched' if state.turnover is 1
+            if state.turnover is 2
+                return 'knockout-state' if state.dsAssociation is 2
+                return 'league-state'
+
+For zones, we display the zone layout during match time, and blank
+during association 3 items, otherwise the default display.
+
+        if state.mode is 'zone'
+            return 'zone' if state.dsAssociation in [1, 2]
+            return 'blank' if state.dsAssociation is 3
+            return 'default'
+
+For layout-mode displays, we display the layout layout during
+matches, and blank during association 3 items -- otherwise the arena
+welcome sign.
+
+        if state.mode is 'layout'
+            return 'layout' if state.dsAssociation in [1, 2]
+            return 'blank' if state.dsAssociation is 3
+            return 'arena-entrance'
+
+For blank displays, always show blank.
+
+        return 'blank' if state.mode is 'blank'
 
 In all other cases, fall back to the default view.
 
@@ -46,6 +72,7 @@ display selector uses as input.
                      kill: Data.killState
                      judgeSelection: window.JudgeSelection
                      turnover: window.Turnover.map((x) -> x % 3)
+                     dsAssociation: window.CurrentDSAssociation
 
 We then use *selectedDisplay* to map the data source, followed by
 a final pass to skip duplicates, so that we do not flap display
