@@ -10,6 +10,9 @@ wget 'http://code.jquery.com/jquery-1.9.1.min.js' -O dep/js-libs/jquery.js
 # Install underscore
 echo "Installing underscore"
 wget 'https://raw.github.com/documentcloud/underscore/1.4.4/underscore-min.js' -O dep/js-libs/underscore.js
+# Install d3
+echo "Installing d3"
+wget 'http://d3js.org/d3.v3.min.js' -O dep/js-libs/d3.js
 # Download and install bootstrap
 echo "Downloading bootstrap"
 wget 'http://twitter.github.com/bootstrap/assets/bootstrap.zip' -O dep/js-libs/bootstrap.zip
@@ -22,7 +25,7 @@ unzip -p bootstrap.zip bootstrap/js/bootstrap.min.js > bootstrap.js
 popd
 # Flatten them all together
 echo "Flattening JS"
-cat dep/js-libs/jquery.js dep/js-libs/underscore.js dep/js-libs/bootstrap.js dep/js-libs/Bacon.js > src/libs.js
+cat dep/js-libs/jquery.js dep/js-libs/underscore.js dep/js-libs/bootstrap.js dep/js-libs/Bacon.js dep/js-libs/d3.js > src/libs.js
 # Generate the CSS
 echo "Combining CSS"
 cat dep/js-libs/bootstrap.css dep/js-libs/bootstrap-responsive.css > src/bootstrap.css
