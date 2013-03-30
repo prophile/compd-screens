@@ -5,8 +5,7 @@ from autobahn.resource import WebSocketResource
 import json
 
 class ScreenServerProtocol(WebSocketServerProtocol):
-    def __init__(self, *args, **kwargs):
-        WebSocketServerProtocol.__init__(self, *args, **kwargs)
+    def onOpen(self):
         self.screen = None
 
     def do_iam(self, args):
@@ -14,10 +13,10 @@ class ScreenServerProtocol(WebSocketServerProtocol):
         # Send initial data here
 
     def onMessage(self, payload, binary):
-        plain = json.dumps(payload)
+        plain = json.loads(payload)
         message_type = plain.get('type', 'unknown')
         message_handler = 'do_{0}'.format(message_type)
-        self.getattr(self, message_handler)(plain)
+        getattr(self, message_handler)(plain)
 
 factory = WebSocketServerFactory('wss://localhost:8080', debug = False)
 factory.protocol = ScreenServerProtocol
