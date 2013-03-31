@@ -102,20 +102,6 @@ The leaderboard is then filtered to remove duplicates.
 
     leaderboard = leaderboard.skipDuplicates()
 
-Debugging
----------
-
-We debug changes to both scores and leaderboard.
-
-    completedMatches.onValue (x) ->
-        console.log "Matches done", x
-    dataSource.onValue (x) ->
-        console.log "LS source", x
-    leaderboard.onValue (x) ->
-        console.log "Leaderboard", x
-    scores.onValue (x) ->
-        console.log "Scores", x
-
 Public Properties
 -----------------
 
