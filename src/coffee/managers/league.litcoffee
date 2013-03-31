@@ -35,8 +35,6 @@ We use D3 to set the data within the table.
                 tableNodes.enter()
                           .append('tr')
                           .html(nodeHTML)
-                          .classed 'info', (entry) ->
-                              entry.key == state.current?.key
 
                 tableNodes.exit()
                           .remove()
