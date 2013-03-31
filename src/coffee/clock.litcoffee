@@ -72,28 +72,28 @@ time with a 24-hour clock.
 Time is formatted by calling the *formatTime* function, which takes
 a JavaScript *Date* object as the argument.
 
-Before defining *FormatTime*, we first define *formatDoubleDigit*,
+Before defining *FormatTime*, we first define *FormatDoubleDigit*,
 which takes as its first argument an integer in the range 0 -- 99
 inclusive, and returns a two character wide string representing it,
 with a given *padding* character for left-padding given in the
 second argument, which defaults to '0'.
 
-    formatDoubleDigit = (value, padding = '0') ->
+    window.FormatDoubleDigit = (value, padding = '0') ->
         if value < 10
             "#{padding}#{value}"
         else
             "#{value}"
 
-We now define *FormatTime* utilising *formatDoubleDigit*.
+We now define *FormatTime* utilising *FormatDoubleDigit*.
 
     window.FormatTime = (date, seconds = true) ->
-        major = formatDoubleDigit(date.getHours()) +
+        major = FormatDoubleDigit(date.getHours()) +
                 ':' +
-                formatDoubleDigit(date.getMinutes())
+                FormatDoubleDigit(date.getMinutes())
         if seconds
             major +
             ':' +
-            formatDoubleDigit(date.getSeconds())
+            FormatDoubleDigit(date.getSeconds())
         else
             major
 
