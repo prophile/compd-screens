@@ -12,7 +12,7 @@ and return it. If no reference point is specified, we use the current time as
 the reference point.
 
     findActiveDSItem = (list, referencePoint) ->
-        referencePoint = (new Date).valueOf() * 0.001
+        referencePoint = (new Date).valueOf() * 0.001 unless referencePoint?
         last = x for x in list when x.start <= referencePoint
         last
 
