@@ -72,7 +72,7 @@ First, we define the data source.
 
 We then define the stream itself, as a map over the input source.
 
-    currentMatch = Data.matchSchedule.map (data) ->
+    currentMatch = currentMatchSource.map (data) ->
 
 We find the first match active now, using *firstMatchAfter*. A
 feasibility condition is passed to constrain matches to only those
