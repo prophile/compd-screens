@@ -3,7 +3,7 @@ echo '' > src/screens.js
 echo '' > doc/annotated-source.md
 SOURCES=""
 SOURCES+=" clock socket data turnover keyboard day-sched"
-SOURCES+=" match-sched display-select"
+SOURCES+=" match-sched display-select league"
 SOURCES+=" managers/container managers/override managers/clock"
 SOURCES+=" managers/kill-origin managers/day-sched"
 SOURCES+=" debug"
