@@ -47,7 +47,7 @@ condition which simply accepts all matches.
 
 We convert the reference point into a UNIX timestamp for our use.
 
-        referenceUNIX = referencePoint.toValue() * 0.001
+        referenceUNIX = referencePoint.valueOf() * 0.001
 
 We then use Underscore's *find* function to find the first satisfying
 match.
