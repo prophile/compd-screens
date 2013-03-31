@@ -20,6 +20,7 @@ We keep a map of keycodes to internal names.
         56: 'view-8',
         57: 'view-9',
         75: 'kill', # k
+        84: 'load-debug', # t
 
 We then have a stream of keyboard events coming in based on that
 map, discarding those that are not present as well as bounces.

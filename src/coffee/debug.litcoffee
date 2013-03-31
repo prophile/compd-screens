@@ -65,3 +65,9 @@ This is a collection of debug data, for great debugging, and debug.
                 {key: 'z', start: dateBase + 3600*12 + 18*60, teams: ['aaa', 'bbb', 'ccc2', 'ddd'], scores: null, knockout_stage: null}
             ]
 
+We also bind to a keyboard event for simplicity of debugging.
+
+    Keyboard.filter( (x) -> x is 'load-debug' )
+            .onValue (_) ->
+                do DEBUG.loadDebugData
+
