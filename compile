@@ -5,7 +5,7 @@ SOURCES=""
 SOURCES+=" clock socket data turnover keyboard day-sched"
 SOURCES+=" match-sched display-select league"
 SOURCES+=" managers/container managers/override managers/clock"
-SOURCES+=" managers/kill-origin managers/day-sched"
+SOURCES+=" managers/kill-origin  managers/league"
 SOURCES+=" debug"
 for SOURCE in $SOURCES
 do
