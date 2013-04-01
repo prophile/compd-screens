@@ -1,7 +1,8 @@
 Keyboard Input
 ==============
 
-We first collect an event stream of all keyboard events sent to the page.
+We first collect an event stream of all keyboard events sent to the
+page.
 
     keyboardEvents = $(document).asEventStream('keydown')
                                 .map('.keyCode')
