@@ -27,17 +27,9 @@ We use D3 to set the data within the table.
                  <td>#{state.teams[entry.team].name}</td>"
 
             updateTable = (element, entries) ->
-                tableNodes = d3.select("##{element}")
-                               .selectAll('tr')
-                               .data(entries)
-                               .html(nodeHTML)
-
-                tableNodes.enter()
-                          .append('tr')
-                          .html(nodeHTML)
-
-                tableNodes.exit()
-                          .remove()
+                DisplayInformation "##{element}",
+                                   entries,
+                                   'tr', nodeHTML
 
             ENTRIES_PER_SIDE = 14
             updateTable 'league-table-left',
