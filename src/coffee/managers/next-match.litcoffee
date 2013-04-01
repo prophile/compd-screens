@@ -26,17 +26,9 @@ We use D3 to set the data within the list.
             nodeHTML = (entry) ->
                 "<li>#{state.teams[entry].name}</li>"
 
-            listItems = d3.select('.next-match-teams')
-                          .selectAll('li')
-                          .data(state.next.teams)
-                          .html(nodeHTML)
-
-            listItems.enter()
-                     .append('li')
-                     .html(nodeHTML)
-
-            listItems.exit()
-                     .remove()
+            DisplayInformation '.next-match-teams',
+                               state.next.teams,
+                               'li', nodeHTML
 
 Time Display
 ------------
