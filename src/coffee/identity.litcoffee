@@ -4,6 +4,7 @@ Identity
 Each screen has an *identifier*, a short string indicating its identity.
 
 The following identities are examples that could be used:
+
 * arena-door
 * arena-zone-0
 * arena-zone-1
