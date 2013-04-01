@@ -24,15 +24,6 @@ in particular:
 * Match schedule,
 * The *kill* state.
 
-Screen ID Transmission
-----------------------
-
-First, we transmit the screen ID to the server, using the *iam* message. In
-future, this will be derived from user input in some fashion; for the time
-being, it is a constant string, for testing purposes.
-
-    WS.send 'iam', screen: 'example'
-
 Internal Buses
 --------------
 
