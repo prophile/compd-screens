@@ -21,6 +21,7 @@ We keep a map of keycodes to internal names.
         56: 'view-8',
         57: 'view-9',
         75: 'kill', # k
+        82: 'reidentify', # t
         84: 'load-debug', # t
 
 We then have a stream of keyboard events coming in based on that
@@ -49,4 +50,14 @@ We keep a property here to select between them.
                                            .filter( (x) -> x? )
                                            .toProperty('match-display')
                                            .skipDuplicates()
+
+Re-identification Triggering
+----------------------------
+
+When the 'R' character is pressed, we allow the user to re-enter
+the screen's identity.
+
+    Keyboard.filter( (x) -> x is 'reidentify' )
+            .onValue ->
+                do IdentityPrompt.push
 
