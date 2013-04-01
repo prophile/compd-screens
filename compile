@@ -1,6 +1,6 @@
 #!/bin/bash
 echo '' > src/screens.js
-echo '' > doc/annotated-source.md
+cat doc/intro.md > doc/annotated-source.md
 SOURCES=""
 SOURCES+=" clock socket identity data turnover keyboard day-sched"
 SOURCES+=" match-sched display-select league info-display"
@@ -19,7 +19,7 @@ if pandoc --version &>/dev/null
   then
     echo "Compiling annotated source..."
     python scripts/add-coffeescript.py <doc/annotated-source.md | \
-    pandoc --from markdown --to html5 --standalone --toc --smart \
+    pandoc --from markdown --to html5 --standalone --toc --smart -N \
            -o doc/annotated-source.html -
 fi
 
