@@ -14,7 +14,8 @@ do
     coffee --print src/coffee/$SOURCE.litcoffee >> src/screens.js
     cat src/coffee/$SOURCE.litcoffee >> doc/annotated-source.md
 done
-if [ -n "$(which pandoc)" ]
+# Detect if pandoc is present and working
+if pandoc --version &>/dev/null
   then
     echo "Compiling annotated source..."
     python scripts/add-coffeescript.py <doc/annotated-source.md | \
