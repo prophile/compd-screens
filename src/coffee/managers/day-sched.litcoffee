@@ -28,19 +28,10 @@ We use D3 to set the data within the table.
              <td>#{entry.displayName}</td>"
 
         inputStream.onValue (state) ->
-            tableNodes = d3.select('#day-sched-table')
-                           .selectAll('tr')
-                           .data(state.schedule)
-                           .html(nodeHTML)
-                           .classed 'info', (entry) ->
-                               entry.key == state.current?.key
-
-            tableNodes.enter()
-                      .append('tr')
-                      .html(nodeHTML)
-                      .classed 'info', (entry) ->
-                          entry.key == state.current?.key
-
-            tableNodes.exit()
-                      .remove()
+            DisplayInformation '#day-sched-table',
+                               state.schedule,
+                               'tr', nodeHTML,
+                               (nodes) ->
+                                   nodes.classed 'info', (entry) ->
+                                       entry.key == state.current?.key
 
