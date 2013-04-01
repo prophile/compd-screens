@@ -24,7 +24,8 @@ We use D3 to set the data within the table.
         inputStream.onValue (state) ->
             nodeHTML = (entry) ->
                 "<td>#{entry.position}</td>
-                 <td>#{state.teams[entry.team].name}</td>"
+                 <td>#{state.teams[entry.team].name}</td>
+                 <td>#{entry.score}</td>"
 
             updateTable = (element, entries) ->
                 DisplayInformation "##{element}",
