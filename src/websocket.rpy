@@ -9,6 +9,7 @@ from copy import copy
 import txredisapi as redis
 import datetime
 import time
+import re
 
 def dateBase():
     now = datetime.datetime.today()
@@ -42,7 +43,8 @@ class ScreenServerProtocol(WebSocketServerProtocol):
             def connectionMade(self):
                 redis.RedisProtocol.connectionMade(self)
                 self.subscribe(['screen:update',
-                                'comp:schedule'])
+                                'comp:schedule',
+                                'team:update'])
 
             def messageReceived(self, pattern, channel, message):
                 print 'Received: {0}'.format(channel)
@@ -50,6 +52,8 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                     screen.sendMode()
                 elif channel == 'comp:schedule':
                     screen.sendDaySchedule()
+                elif channel == 'team:update':
+                    screen.sendTeamRoster()
         subFactory.protocol = ScreenRedisPubSubListenerProtocol
         reactor.connectTCP('127.0.0.1', 10056, subFactory)
         print 'starting sub connection'
@@ -107,6 +111,23 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                              'key': key})
         self.tx('day', {'schedule': schedule})
 
+    @defer.inlineCallbacks
+    def sendTeamRoster(self):
+        redis = yield self.redisConnection()
+        teams = yield redis.keys('team:*:college')
+        teamDB = {}
+        for team in teams:
+            tla = re.match('team:([a-zA-Z0-9]+):college', team).group(1)
+            college = yield redis.get('team:{0}:college'.format(tla))
+            name = yield redis.get('team:{0}:name'.format(tla))
+            present = yield redis.get('team:{0}:present'.format(tla))
+            notes = yield redis.get('team:{0}:notes'.format(tla))
+            teamDB[tla] = {'college': college,
+                           'name': name,
+                           'present': present == 'yes',
+                           'notes': notes}
+        self.tx('teams', {'teams': teamDB})
+
     def onPing(self):
         WebSocketServerProtocol.onPing(self)
         self.setScreen()
@@ -118,6 +139,7 @@ class ScreenServerProtocol(WebSocketServerProtocol):
         # Send initial data here
         self.sendMode()
         self.sendDaySchedule()
+        self.sendTeamRoster()
         redis = yield self.redisConnection()
         yield redis.publish('screen:connect', self.screen)
 
