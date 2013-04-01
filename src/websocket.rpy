@@ -78,6 +78,9 @@ class ScreenServerProtocol(WebSocketServerProtocol):
             # set default
             redis.set(key, 'default')
             self.tx('mode', {'mode': 'default'})
+        overrideKey = 'screen:{0}:override'.format(self.screen)
+        overrideStatus = yield redis.get(overrideKey)
+        self.tx('override', {'override': overrideStatus})
 
     @defer.inlineCallbacks
     def sendDaySchedule(self):
