@@ -33,7 +33,7 @@ map, discarding those that are not present as well as bounces.
 Judge Selection
 ---------------
 
-The keys 1-4 are used to select between display on the judge's desk.
+The keys 1-6 are used to select between display on the judge's desk.
 
 We keep a property here to select between them.
 
