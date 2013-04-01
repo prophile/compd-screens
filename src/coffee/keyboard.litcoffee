@@ -47,5 +47,5 @@ We keep a property here to select between them.
     window.JudgeSelection = window.Keyboard.map( (k) -> displayMap[k] )
                                            .filter( (x) -> x? )
                                            .toProperty('match-display')
-                                           .skipDuplicates();
+                                           .skipDuplicates()
 
