@@ -85,7 +85,7 @@ the system as if they were received from the server.
 
     messageBus = new Bacon.Bus
     socket.onmessage = (msg) ->
-        messageBus.push msg
+        messageBus.push JSON.parse(msg.data)
 
 Public API
 ----------
