@@ -59,7 +59,7 @@ We bind the *transmitBus*, with buffering, to transmit messages
 through the native WebSockets API.
 
     transmitBus.bufferWithTime(bufferTXBus).onValue (x) ->
-        socket.send x
+        socket.send msg for msg in x
 
 Finally, we define the public API function through which clients
 can send messages. This function constructs a native JavaScript
