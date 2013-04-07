@@ -11,6 +11,13 @@ import datetime
 import time
 import re
 
+def todayBounds():
+    now = datetime.datetime.today()
+    today = datetime.datetime(now.year, now.month, now.day)
+    tomorrow = today + datetime.timedelta(days = 1)
+    return (time.mktime(today.timetuple()),
+            time.mktime(tomorrow.timetuple()))
+
 class ScreenServerProtocol(WebSocketServerProtocol):
     @defer.inlineCallbacks
     def redisConnection(self):
@@ -98,7 +105,10 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                         'photo': 0,
                         'prizes': 3,
                         'briefing': 3}
+        start, end = todayBounds()
         for key, time in allItems:
+            if not (start <= time < end):
+                continue
             eventType = yield redis.get('comp:events:{0}'.format(key))
             schedule.append({'start': time,
                              'displayName': DisplayNames[eventType],
