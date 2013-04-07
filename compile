@@ -8,10 +8,11 @@ SOURCES+=" managers/container managers/override managers/clock"
 SOURCES+=" managers/kill-origin managers/day-sched managers/league"
 SOURCES+=" managers/next-match managers/match-timing"
 SOURCES+=" debug"
+COFFEE="node_modules/coffee-script/bin/coffee"
 for SOURCE in $SOURCES
 do
     echo "Compiling $SOURCE..."
-    coffee --print src/coffee/$SOURCE.litcoffee >> src/screens.js
+    $COFFEE --print src/coffee/$SOURCE.litcoffee >> src/screens.js
     cat src/coffee/$SOURCE.litcoffee >> doc/annotated-source.md
 done
 # Detect if pandoc is present and working

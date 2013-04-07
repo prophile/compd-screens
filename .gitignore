@@ -6,3 +6,4 @@ src/bootstrap.css
 screens.js
 twistd.pid
 doc/annotated-source.*
+node_modules
