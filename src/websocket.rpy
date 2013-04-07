@@ -11,13 +11,6 @@ import datetime
 import time
 import re
 
-def dateBase():
-    now = datetime.datetime.today()
-    epoch = datetime.datetime(now.year,
-                              now.month,
-                              now.day)
-    return time.mktime(epoch.timetuple())
-
 class ScreenServerProtocol(WebSocketServerProtocol):
     @defer.inlineCallbacks
     def redisConnection(self):
@@ -89,7 +82,6 @@ class ScreenServerProtocol(WebSocketServerProtocol):
         allItems = yield redis.zrange('comp:schedule', 0, itemCount,
                                       withscores = True)
         schedule = []
-        timeBase = dateBase()
         DisplayNames = {'league': 'League Matches',
                         'knockout': 'Knockout Matches',
                         'lunch': 'Lunch',
@@ -108,7 +100,7 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                         'briefing': 3}
         for key, time in allItems:
             eventType = yield redis.get('comp:events:{0}'.format(key))
-            schedule.append({'start': timeBase + time,
+            schedule.append({'start': time,
                              'displayName': DisplayNames[eventType],
                              'association': Associations[eventType],
                              'key': key})
