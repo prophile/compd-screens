@@ -22,7 +22,7 @@
 * Default (non-match)
 * Colour, match timer & team name TODO
 
-# Blank
+## Blank
 
 * White page
 
