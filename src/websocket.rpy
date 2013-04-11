@@ -44,7 +44,8 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                 redis.RedisProtocol.connectionMade(self)
                 self.subscribe(['screen:update',
                                 'comp:schedule',
-                                'team:update'])
+                                'team:update',
+                                'match:schedule'])
 
             def messageReceived(self, pattern, channel, message):
                 print 'Received: {0}'.format(channel)
@@ -54,6 +55,8 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                     screen.sendDaySchedule()
                 elif channel == 'team:update':
                     screen.sendTeamRoster()
+                elif channel == 'match:schedule':
+                    screen.sendMatchSchedule()
         subFactory.protocol = ScreenRedisPubSubListenerProtocol
         reactor.connectTCP('127.0.0.1', 10056, subFactory)
         print 'starting sub connection'
@@ -133,6 +136,34 @@ class ScreenServerProtocol(WebSocketServerProtocol):
                            'notes': notes}
         self.tx('teams', {'teams': teamDB})
 
+    @defer.inlineCallbacks
+    def sendMatchSchedule(self):
+        redis = yield self.redisConnection()
+        matchCount = yield redis.zcard('match:schedule')
+        matches = yield redis.zrange('match:schedule', 0, matchCount,
+                                      withscores = True)
+        # some things
+        schedule = []
+        start, end = todayBounds()
+        for key, time in matches:
+            if not (start <= time < end):
+                continue
+            format = yield redis.get('match:matches:{0}:format'.format(key))
+            teamCount = yield redis.llen('match:matches:{0}:teams'.format(key))
+            if teamCount:
+                teams = []
+                for i in xrange(teamCount):
+                    teams.append((yield redis.lindex('match:matches:{0}:teams'.format(key), i)))
+            else:
+                teams = None
+            match = {'key': key,
+                     'start': time,
+                     'teams': teams,
+                     'scores': None,
+                     'knockout_stage': 1 if format == 'knockout' else None}
+            schedule.append(match)
+        self.tx('matches', {'schedule': schedule})
+
     def onPing(self):
         WebSocketServerProtocol.onPing(self)
         self.setScreen()
@@ -145,6 +176,7 @@ class ScreenServerProtocol(WebSocketServerProtocol):
         self.sendMode()
         self.sendDaySchedule()
         self.sendTeamRoster()
+        self.sendMatchSchedule()
         redis = yield self.redisConnection()
         yield redis.publish('screen:connect', self.screen)
 

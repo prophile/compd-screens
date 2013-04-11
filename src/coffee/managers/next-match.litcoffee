@@ -27,7 +27,7 @@ We use D3 to set the data within the list.
                 "<li>#{state.teams[entry].name}</li>"
 
             DisplayInformation '.next-match-teams',
-                               state.next.teams,
+                               state.next.teams ? [],
                                'li', nodeHTML
 
 Time Display
