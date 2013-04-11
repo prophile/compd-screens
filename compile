@@ -6,7 +6,7 @@ SOURCES+=" clock socket identity data turnover keyboard day-sched"
 SOURCES+=" match-sched display-select league info-display"
 SOURCES+=" managers/container managers/override managers/clock"
 SOURCES+=" managers/kill-origin managers/day-sched managers/league"
-SOURCES+=" managers/next-match managers/match-timing"
+SOURCES+=" managers/next-match managers/match-timing managers/match-sched"
 SOURCES+=" debug"
 COFFEE="node_modules/coffee-script/bin/coffee"
 for SOURCE in $SOURCES
