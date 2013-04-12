@@ -29,7 +29,8 @@ We use D3 to set the data within the table.
                 dateString = FormatTime(FromUNIX(entry.start), false)
                 if entry.teams?
                   teams = _.map(entry.teams,
-                                (x) -> "<td>#{state.teams[x].name}</td>").join('')
+                                (x) -> "<td>#{state.teams[x]?.name ? x}</td>")
+                           .join('')
                 else
                   teams = '<td></td><td></td><td></td><td></td>'
                 "<td>#{dateString}</td>
