@@ -33,10 +33,22 @@ It is left as an exercise to the reader to guess how the rest of these go...
                        .assign $('#next-match'), 'toggle'
         SelectedDisplay.map( (x) -> x is 'day-sched' )
                        .assign $('#day-sched'), 'toggle'
-        SelectedDisplay.map( (x) -> x is 'zone' )
-                       .assign $('#zone'), 'toggle'
         SelectedDisplay.map( (x) -> x is 'layout' )
                        .assign $('#layout'), 'toggle'
         SelectedDisplay.map( (x) -> x is 'arena-entrance' )
                        .assign $('#arena-entrance'), 'toggle'
+        SelectedDisplay.map( (x) -> /zone-/.match x )
+                       .assign $('#zone'), 'toggle'
+
+Selected Zone
+-------------
+
+We get the selected zone from the selected display.
+
+        window.SelectedZone =
+            SelectedDisplay.map( (x) -> /zone-([0-3])/.exec x )
+                           .filter( (x) -> x? )
+                           .map( (x) -> parseInt(x[1]) )
+                           .toProperty(0)
+                           .skipDuplicates()
 
