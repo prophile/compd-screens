@@ -29,6 +29,10 @@ string.
 
         formatMatchTime = (secondsSinceStart) ->
 
+We floor the seconds since start for sensible display.
+
+            secondsSinceStart = Math.floor secondsSinceStart
+
 The first match mode is that of the swap time and initial preparation
 for the match, where we simply display the string "upcoming".
 
