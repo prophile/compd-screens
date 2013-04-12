@@ -43,8 +43,12 @@ We keep a property here to select between them.
         'view-2': 'match-sched'
         'view-3': 'league-state'
         'view-4': 'knockout-state'
-        'view-5': 'next-match'
+        'view-5': 'layout'
         'view-6': 'day-sched'
+        'view-7': 'zone-0'
+        'view-8': 'zone-1'
+        'view-9': 'zone-2'
+        'view-0': 'zone-3'
 
     window.JudgeSelection = window.Keyboard.map( (k) -> displayMap[k] )
                                            .filter( (x) -> x? )

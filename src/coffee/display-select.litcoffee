@@ -39,8 +39,8 @@ distractions).
 For zones, we display the zone layout during match time, and blank
 during association 3 items, otherwise the default display.
 
-        if state.mode is 'zone'
-            return 'zone' if state.dsAssociation in [1, 2]
+        if /zone-/.test state.mode
+            return state.mode if state.dsAssociation in [1, 2]
             return 'blank' if state.dsAssociation is 3
             return 'default'
 
