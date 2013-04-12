@@ -24,7 +24,8 @@ We use D3 to set the data within the list.
             return unless state.next?
 
             nodeHTML = (entry) ->
-                "<li>#{state.teams[entry].name}</li>"
+                name = state.teams[entry]?.name ? entry
+                "<li>#{name}</li>"
 
             DisplayInformation '.next-match-teams',
                                state.next.teams ? [],
