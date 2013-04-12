@@ -54,7 +54,7 @@ match.
 
         _.find schedule, (match) ->
             return no unless feasibility(match, referencePoint)
-            match.start - MATCH_PREROLL >= referenceUNIX
+            match.start + MATCH_POSTROLL >= referenceUNIX
 
 Current Match
 -------------
