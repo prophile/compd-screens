@@ -37,7 +37,7 @@ It is left as an exercise to the reader to guess how the rest of these go...
                        .assign $('#layout'), 'toggle'
         SelectedDisplay.map( (x) -> x is 'arena-entrance' )
                        .assign $('#arena-entrance'), 'toggle'
-        SelectedDisplay.map( (x) -> /zone-/.match x )
+        SelectedDisplay.map( (x) -> /zone-/.test x )
                        .assign $('#zone'), 'toggle'
 
 Selected Zone
